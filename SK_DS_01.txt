@@ -1,0 +1,27 @@
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
+# Load the dataset from a URL
+url = 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv'
+df = pd.read_csv(url)
+
+print("Dataset preview:")
+print(df.head())
+
+sns.set_style('whitegrid')
+
+plt.figure(figsize=(8, 5))
+sns.countplot(x='sex', data=df, palette='pastel')
+plt.title('Distribution of Gender in the Tips Dataset')
+plt.xlabel('Gender')
+plt.ylabel('Count')
+plt.show()
+
+plt.figure(figsize=(8, 5))
+sns.histplot(df['total_bill'], bins=10, kde=True, color='skyblue')
+plt.title('Total Bill Distribution in the Tips Dataset')
+plt.xlabel('Total Bill')
+plt.ylabel('Frequency')
+plt.show(
